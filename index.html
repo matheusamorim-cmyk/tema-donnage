@@ -1,880 +1,1656 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@400;500;600;700&display=swap");
-
-:root {
-  /* Paleta do tema */
-  --dg-bordo: #6a0c0c;
-  --dg-vinho: #3e0a0b;
-  --dg-creme: #f6efe6;
-  --dg-papel: #fbf8f3;
-  --dg-grafite: #1e1615;
-  --dg-texto: #3a2e2b;
-  --dg-texto-suave: #6b5d58;
-  --dg-dourado: #b08d57;
-  --dg-dourado-escuro: #8a6a3a;
-  --dg-linha: #ede5da;
-
-  /* Tipografia */
-  --dg-fonte-titulo: "Playfair Display", Georgia, serif;
-  --dg-fonte-texto: "Montserrat", Arial, sans-serif;
-
-  /* Texto da barra de aviso no topo (edite aqui) */
-  --dg-aviso: "FRETE GRÁTIS ACIMA DE R$ 249  ·  5% OFF NO PIX  ·  6X SEM JUROS";
-
-  /* Cor base da Magazord: mantém o bordô da marca */
-  --cor-base: #6a0c0c;
-  --cor-base-darken: #3e0a0b;
-}
-
-/* 2. Base ------------------------------------------------------------------ */
-body {
-  font-family: var(--dg-fonte-texto);
-  color: var(--dg-texto);
-  -webkit-font-smoothing: antialiased;
-}
-
-img {
-  image-rendering: -webkit-optimize-contrast;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--dg-dourado);
-  outline-offset: 2px;
-}
-
-/* 3. Barra de aviso (topo) ------------------------------------------------- */
-.ra-header .header-top {
-  height: 36px;
-  background: var(--dg-vinho) !important;
-}
-
-.ra-header .header-top .box-top {
-  position: relative;
-  height: 36px;
-}
-
-.ra-header .header-top .box-top::before {
-  content: var(--dg-aviso);
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  white-space: nowrap;
-  font-family: var(--dg-fonte-texto);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  color: var(--dg-creme);
-  pointer-events: none;
-}
-
-/* Redes sociais saem do topo (ficam no rodapé) */
-.ra-header .header-top .box-social {
-  display: none;
-}
-
-.ra-header .header-top .header-info {
-  margin-left: auto;
-}
-
-.ra-header .header-top .header-info .item-top {
-  border-color: rgba(246, 239, 230, 0.2) !important;
-}
-
-.ra-header .header-top .text-item-top,
-.ra-header .header-top .login,
-.ra-header .header-top .link-cart {
-  font-family: var(--dg-fonte-texto);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--dg-creme) !important;
-}
-
-.ra-header .header-top .link-item-top {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-/* 4. Cabeçalho e busca ----------------------------------------------------- */
-.ra-header {
-  box-shadow: none !important;
-  border-bottom: 1px solid var(--dg-linha);
-}
-
-.ra-header .header-middle {
-  background: #ffffff !important;
-  padding-top: 14px !important;
-  padding-bottom: 14px !important;
-}
-
-.ra-header .header-middle .logo img,
-.ra-header .header-middle .logo svg {
-  max-height: 52px;
-  width: auto;
-}
-
-.ra-header .search-area {
-  width: 280px !important;
-}
-
-.ra-header #frm-search {
-  background: transparent !important;
-  border: 0 !important;
-  border-bottom: 1px solid var(--dg-grafite) !important;
-  border-radius: 0 !important;
-}
-
-.ra-header #frm-search input {
-  font-family: var(--dg-fonte-texto);
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  color: var(--dg-grafite);
-  background: transparent !important;
-}
-
-.ra-header #frm-search input::placeholder {
-  color: var(--dg-texto-suave);
-}
-
-.ra-header .box-user a {
-  padding: 10px 16px !important;
-  font-family: var(--dg-fonte-texto);
-  font-size: 12px;
-  color: var(--dg-texto) !important;
-}
-
-.ra-header .box-user a:hover {
-  background: var(--dg-papel) !important;
-}
-
-/* 5. Menu ------------------------------------------------------------------ */
-.ra-header .header-bottom {
-  background: #ffffff !important;
-  border-top: 1px solid var(--dg-linha);
-}
-
-#nav-root > li > a {
-  padding: 16px 22px !important;
-  font-family: var(--dg-fonte-texto);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dg-grafite) !important;
-  position: relative;
-}
-
-#nav-root > li > a::after {
-  content: "";
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 10px;
-  height: 1px;
-  background: currentColor;
-  transform: scaleX(0);
-  transition: transform 0.25s ease;
-}
-
-#nav-root > li > a:hover::after {
-  transform: scaleX(1);
-}
-
-#nav-root > li.outlet > a,
-#nav-root > li.item-menu-outlet > a {
-  color: var(--dg-bordo) !important;
-  font-weight: 600;
-}
-
-#nav-root .menu-level-2 {
-  background: #ffffff !important;
-  border-top: 1px solid var(--dg-linha);
-  box-shadow: 0 16px 32px rgba(30, 22, 21, 0.08);
-}
-
-#nav-root .menu-level-2 a {
-  font-family: var(--dg-fonte-texto);
-  font-size: 13px !important;
-  color: var(--dg-texto) !important;
-}
-
-#nav-root .menu-level-2 a:hover {
-  background: var(--dg-papel) !important;
-  color: var(--dg-bordo) !important;
-}
-
-/* 6. Banners --------------------------------------------------------------- */
-.dynamic-banner-1 .swiper-button-prev,
-.dynamic-banner-1 .swiper-button-next {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(246, 239, 230, 0.85);
-  color: var(--dg-grafite);
-}
-
-.dynamic-banner-1 .swiper-button-prev::after,
-.dynamic-banner-1 .swiper-button-next::after {
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.dynamic-banner-1 .swiper-pagination-bullet {
-  width: 10px;
-  height: 4px;
-  border-radius: 2px;
-  background: #ffffff;
-  opacity: 0.55;
-}
-
-.dynamic-banner-1 .swiper-pagination-bullet-active {
-  width: 28px;
-  opacity: 1;
-}
-
-.fixed-banners {
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-
-.fixed-banners img {
-  border-radius: 0 !important;
-}
-
-/* 7. Títulos de seção ------------------------------------------------------ */
-.title-ctn {
-  margin-top: 56px;
-  margin-bottom: 28px;
-  text-align: center;
-}
-
-.title-ctn .bg-title,
-.title-ctn .bg-title span {
-  background: transparent !important;
-  font-family: var(--dg-fonte-titulo) !important;
-  font-size: 38px !important;
-  font-weight: 400 !important;
-  line-height: 1.15;
-  letter-spacing: 0;
-  text-transform: none !important;
-  color: var(--dg-grafite) !important;
-}
-
-.title-ctn .bg-title::before {
-  display: none !important;
-}
-
-/* Filete dourado embaixo do título */
-.title-ctn .bg-title::after {
-  content: "";
-  display: block !important;
-  width: 48px;
-  height: 1px;
-  margin: 16px auto 0;
-  background: var(--dg-dourado);
-}
-
-/* 8. Categorias (carrossel de banners vira mosaico) ------------------------ */
-.dynamic-banner-5 .swiper-slide a {
-  position: relative;
-  display: block;
-  overflow: hidden;
-}
-
-.dynamic-banner-5 figure {
-  margin: 0;
-  border-radius: 0 !important;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  background: var(--dg-papel);
-}
-
-.dynamic-banner-5 figure img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0 !important;
-  transition: transform 0.6s ease;
-}
-
-.dynamic-banner-5 .swiper-slide a:hover figure img {
-  transform: scale(1.04);
-}
-
-.dynamic-banner-5 .swiper-slide a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(30, 22, 21, 0) 55%, rgba(30, 22, 21, 0.72) 100%);
-  pointer-events: none;
-}
-
-.dynamic-banner-5 .banner-name {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  z-index: 2;
-  display: flex !important;
-  flex-direction: column;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
-  text-align: left;
-  font-family: var(--dg-fonte-texto);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #ffffff !important;
-}
-
-.dynamic-banner-5 .banner-name::after {
-  content: "Ver peças →";
-  display: block;
-  margin-top: 6px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--dg-creme);
-}
-
-/* 9. Vitrines e cards de produto ------------------------------------------- */
-.ra-vitrine .product-list > li > a figure {
-  background: var(--dg-papel);
-  overflow: hidden;
-}
-
-.ra-vitrine .img-principal {
-  transition: transform 0.6s ease !important;
-}
-
-.ra-vitrine .product-list > li > a:hover .img-principal {
-  transform: scale(1.03);
-}
-
-.ra-vitrine .vitrine-default {
-  text-align: left !important;
-  padding-left: 4px !important;
-  padding-right: 4px !important;
-}
-
-.ra-vitrine .product-name {
-  margin-top: 14px !important;
-  font-family: var(--dg-fonte-texto);
-  font-size: 13px !important;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--dg-texto) !important;
-}
-
-.ra-vitrine .price-product {
-  min-height: 0 !important;
-  margin-top: 6px;
-}
-
-.ra-vitrine .top-price {
-  justify-content: flex-start !important;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 8px;
-}
-
-.ra-vitrine .valor-big {
-  font-family: var(--dg-fonte-texto);
-  font-size: 15px !important;
-  font-weight: 600 !important;
-  color: var(--dg-grafite) !important;
-}
-
-.ra-vitrine .secondary-price,
-.ra-vitrine .parcelas,
-.ra-vitrine .valor-parcelado {
-  font-size: 12px !important;
-  color: var(--dg-texto-suave) !important;
-}
-
-.ra-vitrine figure > button {
-  background: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: none !important;
-  border-radius: 50%;
-}
-
-.ra-vitrine .derivacoes-hover {
-  background: rgba(251, 248, 243, 0.94);
-}
-
-.ra-vitrine .deriva {
-  font-size: 12px;
-  color: var(--dg-grafite);
-}
-
-.tag-area .tag-value {
-  border-radius: 0 !important;
-  font-family: var(--dg-fonte-texto);
-  font-size: 11px !important;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.ra-vitrine .button-prev,
-.ra-vitrine .button-next {
-  color: var(--dg-grafite);
-  opacity: 0.6;
-  transition: opacity 0.2s ease;
-}
-
-.ra-vitrine .button-prev:hover,
-.ra-vitrine .button-next:hover {
-  opacity: 1;
-}
-
-/* 10. Avaliações ----------------------------------------------------------- */
-.widget-avaliacao {
-  background: var(--dg-papel);
-}
-
-/* 11. Rodapé --------------------------------------------------------------- */
-.ra-footer .footer-top {
-  background: var(--dg-creme) !important;
-  color: var(--dg-texto);
-}
-
-.ra-footer .footer-middle,
-.ra-footer .footer-middle-top,
-.ra-footer .footer-middle-bottom,
-.ra-footer .footer-bottom,
-.ra-footer > div > div {
-  background: var(--dg-grafite) !important;
-  color: #cbbdb2;
-}
-
-.ra-footer .section-title,
-.ra-footer .section-title span {
-  font-family: var(--dg-fonte-texto);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dg-creme) !important;
-  border-color: rgba(246, 239, 230, 0.15) !important;
-}
-
-.ra-footer a,
-.ra-footer li,
-.ra-footer p,
-.ra-footer .list-menu-default {
-  color: #cbbdb2 !important;
-  font-size: 13px;
-}
-
-.ra-footer a:hover {
-  color: var(--dg-creme) !important;
-}
-
-.ra-footer .border-secondary-200,
-.ra-footer .footer-bottom {
-  border-color: rgba(246, 239, 230, 0.12) !important;
-}
-
-.ra-footer .box-social img,
-.ra-footer .box-social svg {
-  filter: brightness(0) invert(0.93) sepia(0.15);
-}
-
-/* 12. Avisos, pop-ups e WhatsApp ------------------------------------------- */
-.informativo-lgpd {
-  background: var(--dg-grafite) !important;
-  color: var(--dg-creme) !important;
-  font-size: 13px;
-}
-
-.informativo-lgpd a {
-  color: var(--dg-creme) !important;
-  text-decoration: underline;
-}
-
-.informativo-lgpd .botao-continuar-fechar {
-  background: var(--dg-creme) !important;
-  border-color: var(--dg-creme) !important;
-  color: var(--dg-grafite) !important;
-  border-radius: 0 !important;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-size: 12px;
-}
-
-.cupom-desconto .titulo-newsletter {
-  font-family: var(--dg-fonte-titulo);
-  font-weight: 400;
-}
-
-.button.button-base,
-.btn-comprar,
-.botao-comprar {
-  border-radius: 0 !important;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* 13. Blocos HTML próprios (.dg-*) ----------------------------------------- */
-.dg-bloco {
-  font-family: var(--dg-fonte-texto);
-  color: var(--dg-texto);
-  box-sizing: border-box;
-}
-
-.dg-bloco *,
-.dg-bloco *::before,
-.dg-bloco *::after {
-  box-sizing: inherit;
-}
-
-.dg-bloco img {
-  display: block;
-  max-width: 100%;
-}
-
-.dg-eyebrow {
-  margin: 0 0 14px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--dg-dourado-escuro);
-}
-
-.dg-titulo {
-  margin: 0 0 18px;
-  font-family: var(--dg-fonte-titulo);
-  font-size: clamp(28px, 3.2vw, 44px);
-  font-weight: 400;
-  line-height: 1.12;
-  color: var(--dg-vinho);
-}
-
-.dg-texto {
-  margin: 0 0 28px;
-  font-size: 15px;
-  line-height: 1.7;
-  color: var(--dg-texto);
-}
-
-.dg-botao {
-  display: inline-block;
-  padding: 15px 34px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--dg-creme) !important;
-  background: var(--dg-bordo);
-  border: 1px solid var(--dg-bordo);
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.dg-botao:hover {
-  background: var(--dg-vinho);
-  border-color: var(--dg-vinho);
-}
-
-.dg-botao--claro {
-  color: var(--dg-creme) !important;
-  background: transparent;
-  border-color: var(--dg-creme);
-}
-
-.dg-botao--claro:hover {
-  color: var(--dg-vinho) !important;
-  background: var(--dg-creme);
-}
-
-/* 13a. Mosaico de categorias */
-.dg-mosaico {
-  max-width: 1240px;
-  margin: 56px auto;
-  padding: 0 16px;
-}
-
-.dg-mosaico__frase {
-  margin: 0 0 32px;
-  text-align: center;
-  font-family: var(--dg-fonte-titulo);
-  font-style: italic;
-  font-size: 20px;
-  color: var(--dg-texto-suave);
-}
-
-.dg-mosaico__grade {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.dg-mosaico__item {
-  position: relative;
-  display: block;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  text-decoration: none;
-  background: var(--dg-papel);
-}
-
-.dg-mosaico__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.dg-mosaico__item:hover img {
-  transform: scale(1.04);
-}
-
-.dg-mosaico__item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(30, 22, 21, 0) 55%, rgba(30, 22, 21, 0.75) 100%);
-}
-
-.dg-mosaico__nome {
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 22px;
-  z-index: 1;
-  color: #ffffff;
-}
-
-.dg-mosaico__nome strong {
-  display: block;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-}
-
-.dg-mosaico__nome span {
-  display: block;
-  margin-top: 6px;
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--dg-creme);
-}
-
-/* 13b. História da marca */
-.dg-historia {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 1240px;
-  margin: 72px auto;
-  background: var(--dg-creme);
-}
-
-.dg-historia__foto img {
-  width: 100%;
-  height: 100%;
-  min-height: 420px;
-  object-fit: cover;
-}
-
-.dg-historia__conteudo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 56px 64px;
-}
-
-/* 13c. Faixa de vantagens */
-.dg-vantagens {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 1240px;
-  margin: 0 auto 72px;
-  padding: 32px 16px;
-  border-top: 1px solid var(--dg-linha);
-  border-bottom: 1px solid var(--dg-linha);
-  text-align: center;
-}
-
-.dg-vantagens__item strong {
-  display: block;
-  font-family: var(--dg-fonte-titulo);
-  font-size: 30px;
-  font-weight: 400;
-  color: var(--dg-bordo);
-}
-
-.dg-vantagens__item span {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--dg-texto-suave);
-}
-
-/* 13d. Destaque masculino */
-.dg-masculino {
-  display: grid;
-  grid-template-columns: minmax(260px, 1fr) 2fr;
-  gap: 48px;
-  align-items: center;
-  margin: 72px 0;
-  padding: 56px max(16px, calc((100% - 1240px) / 2));
-  background: var(--dg-vinho);
-}
-
-.dg-masculino .dg-eyebrow {
-  color: #c9a46a;
-}
-
-.dg-masculino .dg-titulo {
-  color: var(--dg-creme);
-}
-
-.dg-masculino .dg-texto {
-  color: #e3d3c4;
-}
-
-.dg-masculino__fotos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
-.dg-masculino__fotos a {
-  display: block;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-}
-
-.dg-masculino__fotos img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.dg-masculino__fotos a:hover img {
-  transform: scale(1.04);
-}
-
-/* 14. Celular -------------------------------------------------------------- */
-@media (max-width: 767px) {
-  .ra-header .header-top .box-top::before {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    content: "5% OFF NO PIX  ·  6X SEM JUROS";
-  }
-
-  .title-ctn {
-    margin-top: 36px;
-    margin-bottom: 18px;
-  }
-
-  .title-ctn .bg-title,
-  .title-ctn .bg-title span {
-    font-size: 26px !important;
-  }
-
-  .dynamic-banner-5 .swiper-slide a::after {
-    display: none;
-  }
-
-  .dynamic-banner-5 .banner-name {
-    position: static;
-    margin-top: 8px;
-    align-items: center !important;
-    text-align: center;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--dg-grafite) !important;
-  }
-
-  .dynamic-banner-5 .banner-name::after {
-    display: none;
-  }
-
-  .ra-vitrine .vitrine-default {
-    text-align: center !important;
-  }
-
-  .ra-vitrine .top-price {
-    justify-content: center !important;
-  }
-
-  .ra-vitrine .product-name {
-    font-size: 11px !important;
-  }
-
-  .ra-vitrine .valor-big {
-    font-size: 12px !important;
-  }
-
-  .ra-vitrine .secondary-price,
-  .ra-vitrine .parcelas,
-  .ra-vitrine .valor-parcelado {
-    font-size: 10px !important;
-  }
-
-  .ra-footer .group {
-    background: transparent !important;
-    border-color: rgba(246, 239, 230, 0.12) !important;
-  }
-
-  .dg-mosaico__grade {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-
-  .dg-mosaico__nome {
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-  }
-
-  .dg-mosaico__nome strong {
-    font-size: 13px;
-    letter-spacing: 0.16em;
-  }
-
-  .dg-historia {
-    grid-template-columns: 1fr;
-    margin: 48px 16px;
-  }
-
-  .dg-historia__foto img {
-    min-height: 240px;
-    max-height: 320px;
-  }
-
-  .dg-historia__conteudo {
-    padding: 32px 24px;
-  }
-
-  .dg-vantagens {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 8px;
-    margin: 0 16px 48px;
-  }
-
-  .dg-vantagens__item strong {
-    font-size: 24px;
-  }
-
-  .dg-masculino {
-    grid-template-columns: 1fr;
-    gap: 28px;
-    padding: 40px 16px;
-  }
-
-  .dg-masculino__fotos {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DonnaGê — Tema Serra (Prévia Magazord)</title>
+  <!-- Google Fonts carregadas conforme o tema -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DonnaGê — Tema "Serra" (inspirado na linguagem da Principessa)
+       Plataforma: Magazord · Folha de Estilos Integrada
+       ========================================================================== */
+
+    :root {
+      /* Paleta do tema */
+      --dg-bordo: #6a0c0c;
+      --dg-vinho: #3e0a0b;
+      --dg-creme: #f6efe6;
+      --dg-papel: #fbf8f3;
+      --dg-grafite: #1e1615;
+      --dg-texto: #3a2e2b;
+      --dg-texto-suave: #6b5d58;
+      --dg-dourado: #b08d57;
+      --dg-dourado-escuro: #8a6a3a;
+      --dg-linha: #ede5da;
+
+      /* Tipografia */
+      --dg-fonte-titulo: "Playfair Display", Georgia, serif;
+      --dg-fonte-texto: "Montserrat", Arial, sans-serif;
+
+      /* Texto da barra de aviso no topo */
+      --dg-aviso: "FRETE GRÁTIS ACIMA DE R$ 249  ·  5% OFF NO PIX  ·  6X SEM JUROS";
+
+      /* Cor base da Magazord */
+      --cor-base: #6a0c0c;
+      --cor-base-darken: #3e0a0b;
+    }
+
+    /* Reset básico para alinhamento uniforme */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--dg-fonte-texto);
+      color: var(--dg-texto);
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      image-rendering: -webkit-optimize-contrast;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--dg-dourado);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* 3. Barra de aviso (topo) ------------------------------------------------- */
+    .ra-header .header-top {
+      height: 36px;
+      background: var(--dg-vinho) !important;
+      position: relative;
+      z-index: 50;
+    }
+
+    .ra-header .header-top .box-top {
+      position: relative;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .ra-header .header-top .box-top::before {
+      content: var(--dg-aviso);
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      font-family: var(--dg-fonte-texto);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--dg-creme);
+      pointer-events: none;
+    }
+
+    .ra-header .header-top .box-social {
+      display: none;
+    }
+
+    .ra-header .header-top .header-info {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .ra-header .header-top .header-info .item-top {
+      border-left: 1px solid rgba(246, 239, 230, 0.2) !important;
+      padding-left: 14px;
+    }
+
+    .ra-header .header-top .text-item-top,
+    .ra-header .header-top .login,
+    .ra-header .header-top .link-cart {
+      font-family: var(--dg-fonte-texto);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dg-creme) !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ra-header .header-top .link-item-top {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+    /* 4. Cabeçalho e busca ----------------------------------------------------- */
+    .ra-header {
+      box-shadow: none !important;
+      border-bottom: 1px solid var(--dg-linha);
+      background: #ffffff;
+    }
+
+    .ra-header .header-middle {
+      background: #ffffff !important;
+      padding-top: 14px !important;
+      padding-bottom: 14px !important;
+    }
+
+    .ra-header .header-middle .header-middle-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .ra-header .header-middle .logo {
+      font-family: var(--dg-fonte-titulo);
+      font-size: 32px;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: var(--dg-vinho);
+      text-transform: uppercase;
+    }
+
+    .ra-header .header-middle .logo img,
+    .ra-header .header-middle .logo svg {
+      max-height: 52px;
+      width: auto;
+    }
+
+    .ra-header .search-area {
+      width: 320px !important;
+    }
+
+    .ra-header #frm-search {
+      background: transparent !important;
+      border: 0 !important;
+      border-bottom: 1px solid var(--dg-grafite) !important;
+      border-radius: 0 !important;
+      display: flex;
+      align-items: center;
+      padding: 6px 0;
+    }
+
+    .ra-header #frm-search input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-family: var(--dg-fonte-texto);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--dg-grafite);
+      background: transparent !important;
+    }
+
+    .ra-header #frm-search input::placeholder {
+      color: var(--dg-texto-suave);
+    }
+
+    .ra-header #frm-search button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--dg-grafite);
+      font-size: 14px;
+    }
+
+    .ra-header .box-user a {
+      padding: 10px 16px !important;
+      font-family: var(--dg-fonte-texto);
+      font-size: 12px;
+      color: var(--dg-texto) !important;
+      border: 1px solid var(--dg-linha);
+      transition: background 0.2s ease;
+    }
+
+    .ra-header .box-user a:hover {
+      background: var(--dg-papel) !important;
+    }
+
+    /* 5. Menu ------------------------------------------------------------------ */
+    .ra-header .header-bottom {
+      background: #ffffff !important;
+      border-top: 1px solid var(--dg-linha);
+    }
+
+    #nav-root {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      position: relative;
+    }
+
+    #nav-root > li > a {
+      display: block;
+      padding: 16px 22px !important;
+      font-family: var(--dg-fonte-texto);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dg-grafite) !important;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    #nav-root > li > a::after {
+      content: "";
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 10px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+
+    #nav-root > li > a:hover::after {
+      transform: scaleX(1);
+    }
+
+    #nav-root > li.outlet > a,
+    #nav-root > li.item-menu-outlet > a {
+      color: var(--dg-bordo) !important;
+      font-weight: 600;
+    }
+
+    #nav-root li.has-dropdown {
+      position: relative;
+    }
+
+    #nav-root .menu-level-2 {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: #ffffff !important;
+      border-top: 1px solid var(--dg-linha);
+      box-shadow: 0 16px 32px rgba(30, 22, 21, 0.08);
+      list-style: none;
+      padding: 10px 0;
+      z-index: 100;
+    }
+
+    #nav-root li.has-dropdown:hover .menu-level-2 {
+      display: block;
+    }
+
+    #nav-root .menu-level-2 a {
+      display: block;
+      padding: 10px 20px;
+      font-family: var(--dg-fonte-texto);
+      font-size: 13px !important;
+      color: var(--dg-texto) !important;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    #nav-root .menu-level-2 a:hover {
+      background: var(--dg-papel) !important;
+      color: var(--dg-bordo) !important;
+    }
+    /* 6. Banners --------------------------------------------------------------- */
+    .dynamic-banner-1 {
+      position: relative;
+      width: 100%;
+      background: var(--dg-papel);
+      overflow: hidden;
+    }
+
+    .dynamic-banner-1 .banner-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center 25%;
+    }
+
+    .dynamic-banner-1 .swiper-button-prev,
+    .dynamic-banner-1 .swiper-button-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(246, 239, 230, 0.85);
+      color: var(--dg-grafite);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+
+    .dynamic-banner-1 .swiper-button-prev { left: 24px; }
+    .dynamic-banner-1 .swiper-button-next { right: 24px; }
+    .dynamic-banner-1 .swiper-button-prev:hover,
+    .dynamic-banner-1 .swiper-button-next:hover {
+      background: #ffffff;
+    }
+
+    .dynamic-banner-1 .swiper-pagination {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      z-index: 10;
+    }
+
+    .dynamic-banner-1 .swiper-pagination-bullet {
+      width: 10px;
+      height: 4px;
+      border-radius: 2px;
+      background: #ffffff;
+      opacity: 0.55;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dynamic-banner-1 .swiper-pagination-bullet-active {
+      width: 28px;
+      opacity: 1;
+    }
+
+    .fixed-banners {
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+
+    .fixed-banners-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .fixed-banners img {
+      border-radius: 0 !important;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    /* 7. Títulos de seção ------------------------------------------------------ */
+    .title-ctn {
+      margin-top: 56px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .title-ctn .bg-title,
+    .title-ctn .bg-title span {
+      background: transparent !important;
+      font-family: var(--dg-fonte-titulo) !important;
+      font-size: 38px !important;
+      font-weight: 400 !important;
+      line-height: 1.15;
+      letter-spacing: 0;
+      text-transform: none !important;
+      color: var(--dg-grafite) !important;
+    }
+
+    .title-ctn .bg-title::before {
+      display: none !important;
+    }
+
+    .title-ctn .bg-title::after {
+      content: "";
+      display: block !important;
+      width: 48px;
+      height: 1px;
+      margin: 16px auto 0;
+      background: var(--dg-dourado);
+    }
+    /* 8. Categorias (carrossel de banners vira mosaico) ------------------------ */
+    .dynamic-banner-5 {
+      margin: 40px auto;
+    }
+
+    .dynamic-banner-5 .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .dynamic-banner-5 .swiper-slide a {
+      position: relative;
+      display: block;
+      overflow: hidden;
+    }
+
+    .dynamic-banner-5 figure {
+      margin: 0;
+      border-radius: 0 !important;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: var(--dg-papel);
+    }
+
+    .dynamic-banner-5 figure img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0 !important;
+      transition: transform 0.6s ease;
+    }
+
+    .dynamic-banner-5 .swiper-slide a:hover figure img {
+      transform: scale(1.04);
+    }
+
+    .dynamic-banner-5 .swiper-slide a::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(30, 22, 21, 0) 55%, rgba(30, 22, 21, 0.72) 100%);
+      pointer-events: none;
+    }
+
+    .dynamic-banner-5 .banner-name {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2;
+      display: flex !important;
+      flex-direction: column;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      text-align: left;
+      font-family: var(--dg-fonte-texto);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #ffffff !important;
+    }
+
+    .dynamic-banner-5 .banner-name::after {
+      content: "Ver peças →";
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--dg-creme);
+    }
+
+    /* 9. Vitrines e cards de produto ------------------------------------------- */
+    .ra-vitrine {
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .ra-vitrine .product-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      list-style: none;
+    }
+
+    .ra-vitrine .product-list > li > a {
+      display: block;
+    }
+
+    .ra-vitrine .product-list > li > a figure {
+      background: var(--dg-papel);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3 / 4;
+    }
+
+    .ra-vitrine .img-principal {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease !important;
+    }
+
+    .ra-vitrine .product-list > li > a:hover .img-principal {
+      transform: scale(1.03);
+    }
+
+    .ra-vitrine .vitrine-default {
+      text-align: left !important;
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+    }
+
+    .ra-vitrine .product-name {
+      margin-top: 14px !important;
+      font-family: var(--dg-fonte-texto);
+      font-size: 13px !important;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: var(--dg-texto) !important;
+    }
+
+    .ra-vitrine .price-product {
+      min-height: 0 !important;
+      margin-top: 6px;
+    }
+
+    .ra-vitrine .top-price {
+      display: flex;
+      justify-content: flex-start !important;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 4px 8px;
+    }
+
+    .ra-vitrine .valor-big {
+      font-family: var(--dg-fonte-texto);
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      color: var(--dg-grafite) !important;
+    }
+
+    .ra-vitrine .secondary-price,
+    .ra-vitrine .parcelas,
+    .ra-vitrine .valor-parcelado {
+      font-size: 12px !important;
+      color: var(--dg-texto-suave) !important;
+    }
+
+    .ra-vitrine .secondary-price {
+      text-decoration: line-through;
+    }
+
+    .ra-vitrine figure > button {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.9) !important;
+      box-shadow: none !important;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dg-grafite);
+      font-size: 16px;
+      z-index: 5;
+    }
+
+    .ra-vitrine .derivacoes-hover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(251, 248, 243, 0.94);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+      z-index: 4;
+    }
+
+    .ra-vitrine .product-list > li > a:hover .derivacoes-hover {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ra-vitrine .deriva {
+      font-size: 12px;
+      color: var(--dg-grafite);
+      font-weight: 500;
+      padding: 2px 6px;
+      border: 1px solid var(--dg-linha);
+      background: #ffffff;
+    }
+
+    .tag-area {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 5;
+    }
+
+    .tag-area .tag-value {
+      display: inline-block;
+      padding: 4px 8px;
+      background: var(--dg-vinho);
+      color: var(--dg-creme);
+      border-radius: 0 !important;
+      font-family: var(--dg-fonte-texto);
+      font-size: 11px !important;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ra-vitrine .button-prev,
+    .ra-vitrine .button-next {
+      color: var(--dg-grafite);
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 24px;
+    }
+
+    .ra-vitrine .button-prev:hover,
+    .ra-vitrine .button-next:hover {
+      opacity: 1;
+    }
+    /* 10. Avaliações ----------------------------------------------------------- */
+    .widget-avaliacao {
+      background: var(--dg-papel);
+      padding: 48px 0;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .widget-avaliacao .stars {
+      color: var(--dg-dourado);
+      font-size: 18px;
+      margin-bottom: 12px;
+      letter-spacing: 4px;
+    }
+
+    .widget-avaliacao .quote {
+      font-family: var(--dg-fonte-titulo);
+      font-style: italic;
+      font-size: 22px;
+      max-width: 640px;
+      margin: 0 auto 12px;
+      color: var(--dg-texto);
+    }
+
+    .widget-avaliacao .author {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dg-texto-suave);
+    }
+
+    /* 13. Blocos HTML próprios (.dg-*) ----------------------------------------- */
+    .dg-bloco {
+      font-family: var(--dg-fonte-texto);
+      color: var(--dg-texto);
+      box-sizing: border-box;
+    }
+
+    .dg-bloco *,
+    .dg-bloco *::before,
+    .dg-bloco *::after {
+      box-sizing: inherit;
+    }
+
+    .dg-bloco img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .dg-eyebrow {
+      margin: 0 0 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--dg-dourado-escuro);
+    }
+
+    .dg-titulo {
+      margin: 0 0 18px;
+      font-family: var(--dg-fonte-titulo);
+      font-size: clamp(28px, 3.2vw, 44px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--dg-vinho);
+    }
+
+    .dg-texto {
+      margin: 0 0 28px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--dg-texto);
+    }
+
+    .dg-botao {
+      display: inline-block;
+      padding: 15px 34px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--dg-creme) !important;
+      background: var(--dg-bordo);
+      border: 1px solid var(--dg-bordo);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .dg-botao:hover {
+      background: var(--dg-vinho);
+      border-color: var(--dg-vinho);
+    }
+
+    .dg-botao--claro {
+      color: var(--dg-creme) !important;
+      background: transparent;
+      border-color: var(--dg-creme);
+    }
+
+    .dg-botao--claro:hover {
+      color: var(--dg-vinho) !important;
+      background: var(--dg-creme);
+    }
+
+    /* 13a. Mosaico de categorias */
+    .dg-mosaico {
+      max-width: 1240px;
+      margin: 56px auto;
+      padding: 0 16px;
+    }
+
+    .dg-mosaico__frase {
+      margin: 0 0 32px;
+      text-align: center;
+      font-family: var(--dg-fonte-titulo);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--dg-texto-suave);
+    }
+
+    .dg-mosaico__grade {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .dg-mosaico__item {
+      position: relative;
+      display: block;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      text-decoration: none;
+      background: var(--dg-papel);
+    }
+
+    .dg-mosaico__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .dg-mosaico__item:hover img {
+      transform: scale(1.04);
+    }
+
+    .dg-mosaico__item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(30, 22, 21, 0) 55%, rgba(30, 22, 21, 0.75) 100%);
+    }
+
+    .dg-mosaico__nome {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1;
+      color: #ffffff;
+    }
+
+    .dg-mosaico__nome strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+    }
+
+    .dg-mosaico__nome span {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dg-creme);
+    }
+
+    /* 13b. História da marca */
+    .dg-historia {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1240px;
+      margin: 72px auto;
+      background: var(--dg-creme);
+    }
+
+    .dg-historia__foto img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    .dg-historia__conteudo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 56px 64px;
+    }
+
+    /* 13c. Faixa de vantagens */
+    .dg-vantagens {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1240px;
+      margin: 0 auto 72px;
+      padding: 32px 16px;
+      border-top: 1px solid var(--dg-linha);
+      border-bottom: 1px solid var(--dg-linha);
+      text-align: center;
+    }
+
+    .dg-vantagens__item strong {
+      display: block;
+      font-family: var(--dg-fonte-titulo);
+      font-size: 30px;
+      font-weight: 400;
+      color: var(--dg-bordo);
+    }
+
+    .dg-vantagens__item span {
+      display: block;
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--dg-texto-suave);
+    }
+
+    /* 13d. Destaque masculino */
+    .dg-masculino {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) 2fr;
+      gap: 48px;
+      align-items: center;
+      margin: 72px 0;
+      padding: 56px max(16px, calc((100% - 1240px) / 2));
+      background: var(--dg-vinho);
+    }
+
+    .dg-masculino .dg-eyebrow {
+      color: #c9a46a;
+    }
+
+    .dg-masculino .dg-titulo {
+      color: var(--dg-creme);
+    }
+
+    .dg-masculino .dg-texto {
+      color: #e3d3c4;
+    }
+
+    .dg-masculino__fotos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .dg-masculino__fotos a {
+      display: block;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+    }
+
+    .dg-masculino__fotos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .dg-masculino__fotos a:hover img {
+      transform: scale(1.04);
+    }
+    /* 11. Rodapé --------------------------------------------------------------- */
+    .ra-footer .footer-top {
+      background: var(--dg-creme) !important;
+      color: var(--dg-texto);
+      padding: 40px 0;
+      border-top: 1px solid var(--dg-linha);
+    }
+
+    .ra-footer .footer-middle,
+    .ra-footer .footer-middle-top,
+    .ra-footer .footer-middle-bottom,
+    .ra-footer .footer-bottom,
+    .ra-footer > div > div {
+      background: var(--dg-grafite) !important;
+      color: #cbbdb2;
+    }
+
+    .ra-footer .footer-middle-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+      padding: 56px 0;
+    }
+
+    .ra-footer .section-title,
+    .ra-footer .section-title span {
+      font-family: var(--dg-fonte-texto);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dg-creme) !important;
+      border-color: rgba(246, 239, 230, 0.15) !important;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .ra-footer a,
+    .ra-footer li,
+    .ra-footer p,
+    .ra-footer .list-menu-default {
+      color: #cbbdb2 !important;
+      font-size: 13px;
+      line-height: 1.8;
+      list-style: none;
+    }
+
+    .ra-footer a:hover {
+      color: var(--dg-creme) !important;
+    }
+
+    .ra-footer .footer-bottom {
+      border-top: 1px solid rgba(246, 239, 230, 0.12) !important;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .ra-footer .box-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .ra-footer .box-social svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--dg-creme);
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .ra-footer .box-social svg:hover {
+      opacity: 1;
+    }
+
+    /* 12. Avisos, pop-ups e WhatsApp ------------------------------------------- */
+    .informativo-lgpd {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      max-width: 520px;
+      padding: 16px 20px;
+      background: var(--dg-grafite) !important;
+      color: var(--dg-creme) !important;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+
+    .informativo-lgpd a {
+      color: var(--dg-creme) !important;
+      text-decoration: underline;
+    }
+
+    .informativo-lgpd .botao-continuar-fechar {
+      background: var(--dg-creme) !important;
+      border: 1px solid var(--dg-creme) !important;
+      color: var(--dg-grafite) !important;
+      border-radius: 0 !important;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 16px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    /* Barra flutuante de demonstração do GitHub Pages */
+    .demo-badge {
+      background: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #333;
+    }
+    .demo-badge span strong {
+      color: var(--dg-dourado);
+    }
+    .demo-badge a {
+      color: #aaa;
+      text-decoration: underline;
+    }
+
+    /* 14. Celular -------------------------------------------------------------- */
+    @media (max-width: 767px) {
+      .ra-header .header-top .box-top::before {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        content: "5% OFF NO PIX  ·  6X SEM JUROS";
+      }
+
+      .ra-header .header-middle .header-middle-flex {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .ra-header .search-area {
+        width: 100% !important;
+      }
+
+      #nav-root {
+        flex-wrap: wrap;
+      }
+
+      #nav-root > li > a {
+        padding: 10px 12px !important;
+        font-size: 11px;
+      }
+
+      .fixed-banners-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .title-ctn {
+        margin-top: 36px;
+        margin-bottom: 18px;
+      }
+
+      .title-ctn .bg-title,
+      .title-ctn .bg-title span {
+        font-size: 26px !important;
+      }
+
+      .dynamic-banner-5 .swiper-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .dynamic-banner-5 .swiper-slide a::after {
+        display: none;
+      }
+
+      .dynamic-banner-5 .banner-name {
+        position: static;
+        margin-top: 8px;
+        align-items: center !important;
+        text-align: center;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        color: var(--dg-grafite) !important;
+      }
+
+      .dynamic-banner-5 .banner-name::after {
+        display: none;
+      }
+
+      .ra-vitrine .product-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .ra-vitrine .vitrine-default {
+        text-align: center !important;
+      }
+
+      .ra-vitrine .top-price {
+        justify-content: center !important;
+      }
+
+      .ra-vitrine .product-name {
+        font-size: 11px !important;
+      }
+
+      .ra-vitrine .valor-big {
+        font-size: 12px !important;
+      }
+
+      .ra-vitrine .secondary-price,
+      .ra-vitrine .parcelas,
+      .ra-vitrine .valor-parcelado {
+        font-size: 10px !important;
+      }
+
+      .ra-footer .footer-middle-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .dg-mosaico__grade {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .dg-mosaico__nome {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+      }
+
+      .dg-mosaico__nome strong {
+        font-size: 13px;
+        letter-spacing: 0.16em;
+      }
+
+      .dg-historia {
+        grid-template-columns: 1fr;
+        margin: 48px 16px;
+      }
+
+      .dg-historia__foto img {
+        min-height: 240px;
+        max-height: 320px;
+      }
+
+      .dg-historia__conteudo {
+        padding: 32px 24px;
+      }
+
+      .dg-vantagens {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 8px;
+        margin: 0 16px 48px;
+      }
+
+      .dg-vantagens__item strong {
+        font-size: 24px;
+      }
+
+      .dg-masculino {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 40px 16px;
+      }
+
+      .dg-masculino__fotos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de controle da demonstração -->
+  <aside class="demo-badge" aria-label="Aviso de Demonstração">
+    <span>✨ Demonstração Interativa · Tema <strong>Serra (DonnaGê)</strong> para Magazord</span>
+    <span>GitHub Pages Preview</span>
+  </aside>
+
+  <!-- 3, 4 e 5: Cabeçalho Magazord (.ra-header) -->
+  <header class="ra-header">
+    <!-- Topo Vinho -->
+    <div class="header-top">
+      <div class="container box-top">
+        <ul class="header-info">
+          <li class="item-top">
+            <a href="#" class="link-item-top login">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              Minha Conta
+            </a>
+          </li>
+          <li class="item-top">
+            <a href="#" class="link-item-top link-cart">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              Sacola (0)
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Centro: Logo e Busca -->
+    <div class="header-middle">
+      <div class="container header-middle-flex">
+        <div class="logo">
+          <a href="#">DonnaGê</a>
+        </div>
+
+        <div class="search-area">
+          <form id="frm-search" onsubmit="event.preventDefault();">
+            <input type="text" placeholder="O que você procura hoje?">
+            <button type="submit" aria-label="Buscar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+          </form>
+        </div>
+
+        <div class="box-user">
+          <a href="#">Atendimento VIP</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Principal -->
+    <nav class="header-bottom">
+      <div class="container">
+        <ul id="nav-root">
+          <li><a href="#">Novidades</a></li>
+          <li class="has-dropdown">
+            <a href="#">Alfaiataria</a>
+            <ul class="menu-level-2">
+              <li><a href="#">Blazers Estruturados</a></li>
+              <li><a href="#">Calças de Alfaiataria</a></li>
+              <li><a href="#">Coletes Clássicos</a></li>
+              <li><a href="#">Bermudas Elegantes</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Camisaria</a></li>
+          <li><a href="#">Vestidos</a></li>
+          <li><a href="#">Malharia Fina</a></li>
+          <li><a href="#">Acessórios</a></li>
+          <li class="outlet"><a href="#">Outlet Serra</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- 6. Hero Banner Principal (.dynamic-banner-1) -->
+  <section class="dynamic-banner-1" aria-label="Banner Principal">
+    <img 
+      class="banner-img" 
+      src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop" 
+      alt="Coleção Serra DonnaGê"
+      onerror="this.src='https://placehold.co/1600x520/3e0a0b/f6efe6?text=Colecao+Serra+DonnaGe';"
+    >
+    <button class="swiper-button-prev" aria-label="Anterior" onclick="alertMsg('Slide anterior')">&#10094;</button>
+    <button class="swiper-button-next" aria-label="Próximo" onclick="alertMsg('Próximo slide')">&#10095;</button>
+    <div class="swiper-pagination">
+      <div class="swiper-pagination-bullet swiper-pagination-bullet-active"></div>
+      <div class="swiper-pagination-bullet"></div>
+      <div class="swiper-pagination-bullet"></div>
+    </div>
+  </section>
+
+  <!-- 13c. Faixa de Vantagens (.dg-vantagens) -->
+  <section class="dg-bloco">
+    <div class="dg-vantagens">
+      <div class="dg-vantagens__item">
+        <strong>100%</strong>
+        <span>Fibras Nobres e Algodão Pima</span>
+      </div>
+      <div class="dg-vantagens__item">
+        <strong>Frete Grátis</strong>
+        <span>Em compras acima de R$ 249</span>
+      </div>
+      <div class="dg-vantagens__item">
+        <strong>6x Sem Juros</strong>
+        <span>Ou 5% de desconto no PIX</span>
+      </div>
+      <div class="dg-vantagens__item">
+        <strong>1ª Troca Grátis</strong>
+        <span>Até 30 dias com comodidade</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Título de Seção (.title-ctn) -->
+  <div class="title-ctn">
+    <h2 class="bg-title"><span>Compre por Categoria</span></h2>
+  </div>
+
+  <!-- 8. Categorias (Mosaico dinâmico .dynamic-banner-5) -->
+  <section class="container dynamic-banner-5">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <a href="#">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=600&auto=format&fit=crop" alt="Alfaiataria">
+          </figure>
+          <div class="banner-name">Alfaiataria</div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="#">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600&auto=format&fit=crop" alt="Camisas">
+          </figure>
+          <div class="banner-name">Camisaria Fina</div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="#">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600&auto=format&fit=crop" alt="Vestidos">
+          </figure>
+          <div class="banner-name">Vestidos Fluidos</div>
+        </a>
+      </div>
+      <div class="swiper-slide">
+        <a href="#">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=600&auto=format&fit=crop" alt="Malharia">
+          </figure>
+          <div class="banner-name">Malhas & Tricot</div>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- 7 e 9: Vitrine de Produtos Magazord (.ra-vitrine) -->
+  <section class="container ra-vitrine">
+    <div class="title-ctn">
+      <h2 class="bg-title"><span>Destaques da Coleção</span></h2>
+    </div>
+
+    <ul class="product-list">
+      <!-- Produto 1 -->
+      <li>
+        <a href="#">
+          <figure>
+            <div class="tag-area"><span class="tag-value">Exclusivo</span></div>
+            <button type="button" aria-label="Favoritar" onclick="toggleFav(this, event)">♥</button>
+            <img class="img-principal" src="https://images.unsplash.com/photo-1598554747436-c9293d6a588f?q=80&w=600&auto=format&fit=crop" alt="Blazer Alfaiataria Bordô">
+            <div class="derivacoes-hover">
+              <span class="deriva">36</span>
+              <span class="deriva">38</span>
+              <span class="deriva">40</span>
+              <span class="deriva">42</span>
+            </div>
+          </figure>
+          <div class="vitrine-default">
+            <h3 class="product-name">Blazer Alfaiataria Donna Bordô Clássico</h3>
+            <div class="price-product">
+              <div class="top-price">
+                <span class="valor-big">R$ 589,00</span>
+                <span class="secondary-price">R$ 649,00</span>
+              </div>
+              <div class="parcelas">
+                <span class="valor-parcelado">6x de R$ 98,16 sem juros</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <!-- Produto 2 -->
+      <li>
+        <a href="#">
+          <figure>
+            <div class="tag-area"><span class="tag-value">Novo</span></div>
+            <button type="button" aria-label="Favoritar" onclick="toggleFav(this, event)">♥</button>
+            <img class="img-principal" src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?q=80&w=600&auto=format&fit=crop" alt="Camisa Seda Pura">
+            <div class="derivacoes-hover">
+              <span class="deriva">PP</span>
+              <span class="deriva">P</span>
+              <span class="deriva">M</span>
+              <span class="deriva">G</span>
+            </div>
+          </figure>
+          <div class="vitrine-default">
+            <h3 class="product-name">Camisa Seda Natural Off-White com Botões Dourados</h3>
+            <div class="price-product">
+              <div class="top-price">
+                <span class="valor-big">R$ 429,00</span>
+              </div>
+              <div class="parcelas">
+                <span class="valor-parcelado">6x de R$ 71,50 sem juros</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <!-- Produto 3 -->
+      <li>
+        <a href="#">
+          <figure>
+            <button type="button" aria-label="Favoritar" onclick="toggleFav(this, event)">♥</button>
+            <img class="img-principal" src="https://images.unsplash.com/photo-1551803091-e20673f15770?q=80&w=600&auto=format&fit=crop" alt="Calça Pantalona">
+            <div class="derivacoes-hover">
+              <span class="deriva">38</span>
+              <span class="deriva">40</span>
+              <span class="deriva">42</span>
+            </div>
+          </figure>
+          <div class="vitrine-default">
+            <h3 class="product-name">Calça Pantalona Alta Pregas Estruturadas Crepe</h3>
+            <div class="price-product">
+              <div class="top-price">
+                <span class="valor-big">R$ 389,00</span>
+              </div>
+              <div class="parcelas">
+                <span class="valor-parcelado">6x de R$ 64,83 sem juros</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <!-- Produto 4 -->
+      <li>
+        <a href="#">
+          <figure>
+            <div class="tag-area"><span class="tag-value">-15% OFF</span></div>
+            <button type="button" aria-label="Favoritar" onclick="toggleFav(this, event)">♥</button>
+            <img class="img-principal" src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=600&auto=format&fit=crop" alt="Vestido Midi">
+            <div class="derivacoes-hover">
+              <span class="deriva">P</span>
+              <span class="deriva">M</span>
+              <span class="deriva">G</span>
+            </div>
+          </figure>
+          <div class="vitrine-default">
+            <h3 class="product-name">Vestido Midi Transpassado Manga Longa Vinho</h3>
+            <div class="price-product">
+              <div class="top-price">
+                <span class="valor-big">R$ 499,00</span>
+                <span class="secondary-price">R$ 589,00</span>
+              </div>
+              <div class="parcelas">
+                <span class="valor-parcelado">6x de R$ 83,16 sem juros</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- 13b. Bloco História da Marca (.dg-historia) -->
+  <section class="dg-bloco">
+    <div class="dg-historia">
+      <div class="dg-historia__foto">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="DonnaGê História">
+      </div>
+      <div class="dg-historia__conteudo">
+        <p class="dg-eyebrow">Tradição & Contemporaneidade</p>
+        <h2 class="dg-titulo">A Elegância que Transcende o Efêmero</h2>
+        <p class="dg-texto">
+          Inspirada pela imponência da Serra e pelo rigor da alta alfaiataria clássica, a DonnaGê cria peças atemporais com caimento impecável, tecidos nobres e acabamentos minuciosos para quem valoriza presença e sofisticação autêntica.
+        </p>
+        <a href="#" class="dg-botao">Conheça o Manifesto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13d. Destaque Especial Masculino (.dg-masculino) -->
+  <section class="dg-bloco">
+    <div class="dg-masculino">
+      <div>
+        <p class="dg-eyebrow">Linha Essenciais</p>
+        <h2 class="dg-titulo">Cortes Precisos para Eles</h2>
+        <p class="dg-texto">Descubra camisas em fio egípcio e alfaiataria masculina com conforto térmico e estrutura refinada.</p>
+        <a href="#" class="dg-botao dg-botao--claro">Explorar Coleção</a>
+      </div>
+      <div class="dg-masculino__fotos">
+        <a href="#"><img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=400&auto=format&fit=crop" alt="Masculino 1"></a>
+        <a href="#"><img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=400&auto=format&fit=crop" alt="Masculino 2"></a>
+        <a href="#"><img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=400&auto=format&fit=crop" alt="Masculino 3"></a>
+        <a href="#"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=400&auto=format&fit=crop" alt="Masculino 4"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Avaliações (.widget-avaliacao) -->
+  <section class="widget-avaliacao">
+    <div class="container">
+      <div class="stars">★★★★★</div>
+      <blockquote class="quote">
+        “O acabamento das costuras e a textura dos tecidos surpreendem logo no primeiro toque. Peças com padrão internacional.”
+      </blockquote>
+      <p class="author">— Carolina Meneses · Cliente Verificada</p>
+    </div>
+  </section>
+
+  <!-- 6. Banners Fixos (.fixed-banners) -->
+  <section class="container fixed-banners">
+    <div class="fixed-banners-grid">
+      <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?q=80&w=600&auto=format&fit=crop" alt="Novidades">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600&auto=format&fit=crop" alt="Alfaiataria Premium">
+      <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=600&auto=format&fit=crop" alt="Guia de Medidas">
+    </div>
+  </section>
+  <!-- 11. Rodapé Magazord (.ra-footer) -->
+  <footer class="ra-footer">
+    <!-- Faixa Creme Superior -->
+    <div class="footer-top">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <strong style="font-family: var(--dg-fonte-titulo); font-size: 22px; color: var(--dg-vinho); display: block;">Newsletter DonnaGê Privé</strong>
+          <span style="font-size: 13px; color: var(--dg-texto);">Receba convites para pré-vendas e lançamentos em primeira mão.</span>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <input type="email" placeholder="Digite seu melhor e-mail" style="padding: 12px 18px; border: 1px solid var(--dg-linha); font-size: 13px; min-width: 260px; outline: none;">
+          <button type="button" class="dg-botao" style="padding: 12px 24px; cursor: pointer;">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Miolo Escuro Grafite -->
+    <div class="footer-middle">
+      <div class="container footer-middle-grid">
+        <div>
+          <span class="section-title">Sobre a DonnaGê</span>
+          <p style="margin-bottom: 16px;">Moda autoral pensada para valorizar silhuetas contemporâneas com tecidos nobres e caimento milimétrico.</p>
+          <div class="box-social">
+            <!-- Instagram -->
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="#" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-title">Institucional</span>
+          <ul class="list-menu-default">
+            <li><a href="#">A DonnaGê</a></li>
+            <li><a href="#">Guia de Caimentos</a></li>
+            <li><a href="#">Sustentabilidade</a></li>
+            <li><a href="#">Trabalhe Conosco</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="section-title">Ajuda & Suporte</span>
+          <ul class="list-menu-default">
+            <li><a href="#">Prazos & Envios</a></li>
+            <li><a href="#">Trocas e Devoluções</a></li>
+            <li><a href="#">Formas de Pagamento</a></li>
+            <li><a href="#">Fale Conosco</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <span class="section-title">Segurança</span>
+          <ul class="list-menu-default">
+            <li><a href="#">Privacidade & Cookies</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Compra 100% Segura</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 DonnaGê Indústria e Comércio de Vestuário. Todos os direitos reservados. Plataforma Magazord.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 12. Aviso LGPD (.informativo-lgpd) -->
+  <aside class="informativo-lgpd" id="lgpd-box" role="dialog" aria-label="Aviso de Privacidade">
+    <p>Utilizamos cookies para personalizar sua experiência visual conforme a nossa <a href="#">Política de Privacidade</a>.</p>
+    <button type="button" class="botao-continuar-fechar" onclick="fecharLGPD()">Prosseguir</button>
+  </aside>
+
+  <!-- Script simples para interatividades da demonstração -->
+  <script>
+    function fecharLGPD() {
+      const box = document.getElementById('lgpd-box');
+      if (box) box.style.display = 'none';
+    }
+
+    function toggleFav(button, event) {
+      event.preventDefault();
+      if (button.style.color === 'rgb(106, 12, 12)') {
+        button.style.color = 'var(--dg-grafite)';
+      } else {
+        button.style.color = '#6a0c0c';
+      }
+    }
+
+    function alertMsg(texto) {
+      console.log('Navegação do Banner: ' + texto);
+    }
+  </script>
+</body>
+</html>
