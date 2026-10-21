@@ -43,8 +43,6 @@ button:focus-visible {
 }
 
 /* 3. Barra de aviso (topo) ------------------------------------------------- */
-/* A faixa bordô vira uma barra fina vinho com um único recado no centro.
-   Os atalhos (rastrear pedido, favoritos, carrinho, entrar) continuam à direita. */
 .ra-header .header-top {
   height: 36px;
   background: var(--dg-vinho) !important;
@@ -55,14 +53,13 @@ button:focus-visible {
   height: 36px;
 }
 
-/* O recado fica à esquerda; os atalhos ficam à direita (sem sobrepor) */
 .ra-header .header-top .box-top::before {
   content: var(--dg-aviso);
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  white-space: pre;
+  white-space: nowrap;
   font-family: var(--dg-fonte-texto);
   font-size: 11px;
   font-weight: 500;
@@ -117,7 +114,6 @@ button:focus-visible {
   width: auto;
 }
 
-/* Busca no estilo Principessa: só uma linha embaixo */
 .ra-header .search-area {
   width: 280px !important;
 }
@@ -141,7 +137,6 @@ button:focus-visible {
   color: var(--dg-texto-suave);
 }
 
-/* Bloco "Cadastre-se" mais discreto */
 .ra-header .box-user a {
   padding: 10px 16px !important;
   font-family: var(--dg-fonte-texto);
@@ -170,7 +165,6 @@ button:focus-visible {
   position: relative;
 }
 
-/* Sublinhado fino ao passar o mouse */
 #nav-root > li > a::after {
   content: "";
   position: absolute;
@@ -187,14 +181,12 @@ button:focus-visible {
   transform: scaleX(1);
 }
 
-/* Outlet em destaque, como na Principessa */
 #nav-root > li.outlet > a,
 #nav-root > li.item-menu-outlet > a {
   color: var(--dg-bordo) !important;
   font-weight: 600;
 }
 
-/* Submenu */
 #nav-root .menu-level-2 {
   background: #ffffff !important;
   border-top: 1px solid var(--dg-linha);
@@ -241,7 +233,6 @@ button:focus-visible {
   opacity: 1;
 }
 
-/* Banners fixos: sem cantos arredondados, com um respiro em volta */
 .fixed-banners {
   padding-top: 24px;
   padding-bottom: 24px;
@@ -270,8 +261,7 @@ button:focus-visible {
   color: var(--dg-grafite) !important;
 }
 
-.title-ctn .bg-title::before,
-.title-ctn .bg-title::after {
+.title-ctn .bg-title::before {
   display: none !important;
 }
 
@@ -286,8 +276,6 @@ button:focus-visible {
 }
 
 /* 8. Categorias (carrossel de banners vira mosaico) ------------------------ */
-/* Vale para o componente "carrossel de banners" com nome (dynamic-banner-5),
-   que hoje mostra as categorias em círculos. */
 .dynamic-banner-5 .swiper-slide a {
   position: relative;
   display: block;
@@ -314,7 +302,6 @@ button:focus-visible {
   transform: scale(1.04);
 }
 
-/* Escurece a base da foto para o nome ficar legível */
 .dynamic-banner-5 .swiper-slide a::after {
   content: "";
   position: absolute;
@@ -329,6 +316,9 @@ button:focus-visible {
   right: 20px;
   bottom: 20px;
   z-index: 2;
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start !important;
   justify-content: flex-start !important;
   text-align: left;
   font-family: var(--dg-fonte-texto);
@@ -346,12 +336,6 @@ button:focus-visible {
   font-size: 11px;
   letter-spacing: 0.12em;
   color: var(--dg-creme);
-}
-
-/* O nome fica em coluna (título + "ver peças") */
-.dynamic-banner-5 .banner-name {
-  flex-direction: column;
-  align-items: flex-start !important;
 }
 
 /* 9. Vitrines e cards de produto ------------------------------------------- */
@@ -411,14 +395,12 @@ button:focus-visible {
   color: var(--dg-texto-suave) !important;
 }
 
-/* Botão de favorito discreto */
 .ra-vitrine figure > button {
   background: rgba(255, 255, 255, 0.9) !important;
   box-shadow: none !important;
   border-radius: 50%;
 }
 
-/* Tamanhos que aparecem ao passar o mouse */
 .ra-vitrine .derivacoes-hover {
   background: rgba(251, 248, 243, 0.94);
 }
@@ -428,7 +410,6 @@ button:focus-visible {
   color: var(--dg-grafite);
 }
 
-/* Etiquetas (novo, desconto) */
 .tag-area .tag-value {
   border-radius: 0 !important;
   font-family: var(--dg-fonte-texto);
@@ -438,7 +419,6 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
-/* Setas das vitrines */
 .ra-vitrine .button-prev,
 .ra-vitrine .button-next {
   color: var(--dg-grafite);
@@ -499,7 +479,6 @@ button:focus-visible {
   border-color: rgba(246, 239, 230, 0.12) !important;
 }
 
-/* Ícones das redes em creme */
 .ra-footer .box-social img,
 .ra-footer .box-social svg {
   filter: brightness(0) invert(0.93) sepia(0.15);
@@ -532,7 +511,6 @@ button:focus-visible {
   font-weight: 400;
 }
 
-/* Botões padrão da loja: cantos retos e caixa alta */
 .button.button-base,
 .btn-comprar,
 .botao-comprar {
@@ -542,7 +520,6 @@ button:focus-visible {
 }
 
 /* 13. Blocos HTML próprios (.dg-*) ----------------------------------------- */
-/* Usados pelos arquivos da pasta blocos/. Só afetam elementos com classe dg-. */
 .dg-bloco {
   font-family: var(--dg-fonte-texto);
   color: var(--dg-texto);
@@ -805,7 +782,6 @@ button:focus-visible {
     font-size: 26px !important;
   }
 
-  /* No celular as categorias ficam pequenas: o nome volta para baixo da foto */
   .dynamic-banner-5 .swiper-slide a::after {
     display: none;
   }
@@ -824,7 +800,6 @@ button:focus-visible {
     display: none;
   }
 
-  /* Cards de produto estreitos: texto menor e centralizado */
   .ra-vitrine .vitrine-default {
     text-align: center !important;
   }
@@ -847,7 +822,6 @@ button:focus-visible {
     font-size: 10px !important;
   }
 
-  /* Acordeões do rodapé no celular */
   .ra-footer .group {
     background: transparent !important;
     border-color: rgba(246, 239, 230, 0.12) !important;
